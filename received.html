@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Training Sample Page</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="styles.css">
+	</head>
+    
+	<body>
+
+
+        <div class="sidebar">
+            <!--<h4 class="text-center text-white">My App</h4> -->
+            
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" role="button" id="servicesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    ትራንዚት
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                  <li><a class="dropdown-item" href="#web-design">ተመላሽ ንብረት</a></li>
+                  <li><a class="dropdown-item" href="#seo">አዲስ ንብረት</a></li>
+                  <li><a class="dropdown-item" href="#marketing">ተጠጋኝ ንብረት</a></li>
+                </ul>
+            </div>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+          </div>
+        
+          <!-- Page Content -->
+          <div class="content">
+            <h1 class="text-center">ተመላሽ ንብረቶችን መረከቢያ ሰነድ</h1>
+            <div class="container mt-5">
+                
+                <form>
+                  <!-- Name and ID -->
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="name" class="form-label">Name</label>
+                      <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="id" class="form-label">ID</label>
+                      <input type="text" class="form-control" id="id" placeholder="Enter your ID" required>
+                    </div>
+                  </div>
+            
+                  <!-- Unit -->
+                  <div class="mb-3">
+                    <label for="unit" class="form-label">Unit</label>
+                    <input type="text" class="form-control" id="unit" placeholder="Enter the unit">
+                  </div>
+            
+                  <!-- Quantity -->
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="quantityOrdered" class="form-label">Quantity Ordered</label>
+                      <input type="number" class="form-control" id="quantityOrdered" placeholder="Enter quantity ordered">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="quantityReceived" class="form-label">Quantity Received</label>
+                      <input type="number" class="form-control" id="quantityReceived" placeholder="Enter quantity received">
+                    </div>
+                  </div>
+            
+                  <!-- Unit Price and Total Price -->
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="unitPrice" class="form-label">Unit Price</label>
+                      <input type="number" step="0.01" class="form-control" id="unitPrice" placeholder="Enter unit price">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="totalPrice" class="form-label">Total Price</label>
+                      <input type="number" step="0.01" class="form-control" id="totalPrice" placeholder="Total price" readonly>
+                    </div>
+                  </div>
+            
+                  <!-- Location -->
+                  <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="location" placeholder="Enter location">
+                  </div>
+            
+                  <!-- Remark -->
+                  <div class="mb-3">
+                    <label for="remark" class="form-label">Remark</label>
+                    <textarea class="form-control" id="remark" rows="3" placeholder="Enter any remarks"></textarea>
+                  </div>
+            
+                  <!-- Submit Button -->
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+          </div>
+
+
+
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+	</body>
+	
+</html>
