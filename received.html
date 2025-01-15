@@ -13,7 +13,7 @@
 
 
         <div class="sidebar">
-            <!--<h4 class="text-center text-white">My App</h4> -->
+            
             
             <div class="dropdown">
                 <a class="dropdown-toggle" href="#" role="button" id="servicesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -30,13 +30,13 @@
             <a href="#contact">Contact</a>
           </div>
         
-          <!-- Page Content -->
+          
           <div class="content">
             <h1 class="text-center">ተመላሽ ንብረቶችን መረከቢያ ሰነድ</h1>
             <div class="container mt-5">
                 
                 <form>
-                  <!-- Name and ID -->
+                  
                   <div class="row mb-3">
                     <div class="col-md-6">
                       <label for="name" class="form-label">Name / የዕቃው ሥም</label>
@@ -48,13 +48,13 @@
                     </div>
                   </div>
             
-                  <!-- Unit -->
+                 
                   <div class="mb-3">
                     <label for="unit" class="form-label">Unit / መልኪያ</label>
                     <input type="text" class="form-control" id="unit" placeholder="Enter the unit">
                   </div>
             
-                  <!-- Quantity -->
+                  
                   <div class="row mb-3">
                     <div class="col-md-6">
                       <label for="quantityOrdered" class="form-label">Quantity Ordered / የታዘዘ ብዛት</label>
@@ -66,7 +66,7 @@
                     </div>
                   </div>
             
-                  <!-- Unit Price and Total Price -->
+                  
                   <div class="row mb-3">
                     <div class="col-md-6">
                       <label for="unitPrice" class="form-label">Unit Price / ያንዱ ዋጋ</label>
@@ -78,19 +78,19 @@
                     </div>
                   </div>
             
-                  <!-- Location -->
+                  
                   <div class="mb-3">
                     <label for="location" class="form-label">Location / የተከማ. ቦታ</label>
                     <input type="text" class="form-control" id="location" placeholder="Enter location">
                   </div>
             
-                  <!-- Remark -->
+                  
                   <div class="mb-3">
                     <label for="remark" class="form-label">Remark / መግለጫ</label>
                     <textarea class="form-control" id="remark" rows="3" placeholder="Enter any remarks"></textarea>
                   </div>
             
-                  <!-- Submit Button -->
+                  
                   <button id="submitBtn" type="button" class="btn btn-success">Submit</button>
                 </form>
               </div>
@@ -106,51 +106,74 @@
             const unitPriceInput = document.getElementById('unitPrice');
             const totalPriceInput = document.getElementById('totalPrice');
           
-            // Update total price dynamically
+            
             const updateTotalPrice = () => {
               const quantityOrdered = parseFloat(quantityOrderedInput.value) || 0;
               const unitPrice = parseFloat(unitPriceInput.value) || 0;
               totalPriceInput.value = (quantityOrdered * unitPrice).toFixed(2);
             };
           
-            // Add event listeners for quantity and unit price changes
+            
             quantityOrderedInput.addEventListener('input', updateTotalPrice);
             unitPriceInput.addEventListener('input', updateTotalPrice);
           
-            // Submit button handler
+            
             submitBtn.addEventListener('click', (event) => {
-              event.preventDefault(); // Prevent form submission
-              const name = document.getElementById('name').value;
-              const id = document.getElementById('id').value;
-              const unit = document.getElementById('unit').value;
-              const quantityOrdered = document.getElementById('quantityOrdered').value;
-              const quantityReceived = document.getElementById('quantityReceived').value;
-              const unitPrice = document.getElementById('unitPrice').value;
-              const totalPrice = totalPriceInput.value;
-              const location = document.getElementById('location').value;
-              const remark = document.getElementById('remark').value;
-          
-              // Create a data object
-              const formData = {
-                name,
-                id,
-                unit,
-                quantityOrdered,
-                quantityReceived,
-                unitPrice,
-                totalPrice,
-                location,
-                remark,
-              };
-          
-              // Store data in localStorage
-              const existingData = JSON.parse(localStorage.getItem('formData')) || [];
-              existingData.push(formData);
-              localStorage.setItem('formData', JSON.stringify(existingData));
-          
-              // Redirect to the table page
-              window.location.href = 'index.html';
-            });
+            event.preventDefault(); // Prevent default form submission
+
+            const name = document.getElementById('name').value.trim();
+            const id = document.getElementById('id').value.trim();
+            const unit = document.getElementById('unit').value.trim();
+            const quantityOrdered = document.getElementById('quantityOrdered').value.trim();
+            const quantityReceived = document.getElementById('quantityReceived').value.trim();
+            const unitPrice = document.getElementById('unitPrice').value.trim();
+            const location = document.getElementById('location').value.trim();
+
+            // Array of required fields
+            const requiredFields = [
+              { field: name, message: "Name is required!" },
+              { field: id, message: "ID is required!" },
+              { field: unit, message: "Unit is required!" },
+              { field: quantityOrdered, message: "Quantity Ordered is required!" },
+              { field: quantityReceived, message: "Quantity Received is required!" },
+              { field: unitPrice, message: "Unit Price is required!" },
+              { field: location, message: "Location is required!" },
+            ];
+
+            // Check for missing fields
+            const missingFields = requiredFields.filter(fieldObj => !fieldObj.field);
+
+            if (missingFields.length > 0) {
+              // Alert the first missing field's message
+              alert(missingFields[0].message);
+              return;
+            }
+
+            // If all fields are filled, proceed with form submission logic
+            const totalPrice = totalPriceInput.value.trim();
+            const remark = document.getElementById('remark').value.trim();
+
+            const formData = {
+              name,
+              id,
+              unit,
+              quantityOrdered,
+              quantityReceived,
+              unitPrice,
+              totalPrice,
+              location,
+              remark,
+            };
+
+            // Save form data to localStorage
+            const existingData = JSON.parse(localStorage.getItem('formData')) || [];
+            existingData.push(formData);
+            localStorage.setItem('formData', JSON.stringify(existingData));
+
+            // Redirect to another page
+            window.location.href = 'index.html';
+          });
+
           </script>
 	</body>
 	
